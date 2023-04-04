@@ -8,8 +8,8 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build 
+RUN npm run build --prod
 
 FROM nginx:stable-alpine3.17-slim
 
-COPY --from=builder /app/build/my-app/ /usr/share/nginx/html/
+COPY --from=builder /app/dist/my-app/ /usr/share/nginx/html/
